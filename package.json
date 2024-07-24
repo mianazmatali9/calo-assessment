@@ -1,6 +1,16 @@
 {
   "name": "root",
   "private": true,
+  "scripts": {
+    "lint:backend": "lerna run lint --scope backend",
+    "lint:frontend": "lerna run lint --scope frontend",
+    "dev:backend": "lerna run dev --scope backend",
+    "lint": "lerna run lint",
+    "lint:fix": "lerna run lint:fix",
+    "typecheck": "lerna run typecheck",
+    "test:backend": "lerna run test --scope backend",
+    "test:frontend": "lerna run test --scope frontend"
+  },
   "devDependencies": {
     "@types/jest": "^29.5.3",
     "@types/node": "20.4.0",
@@ -22,16 +32,6 @@
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
     "typescript": "5.1.6"
-  },
-  "scripts": {
-    "lint:backend": "lerna run lint --scope backend",
-    "lint:frontend": "lerna run lint --scope frontend",
-    "dev:backend": "lerna run dev --scope backend",
-    "lint": "lerna run lint",
-    "lint:fix": "lerna run lint:fix",
-    "typecheck": "lerna run typecheck",
-    "test:backend": "lerna run test --scope backend",
-    "test:frontend": "lerna run test --scope frontend"
   },
   "dependencies": {
     "axios": "^1.4.0",

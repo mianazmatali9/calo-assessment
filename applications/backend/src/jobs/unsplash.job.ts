@@ -1,22 +1,38 @@
-import { getRandomImageFunc } from '../services/unsplash.service';
+import path from 'path';
+import { Worker } from 'worker_threads';
+
 import { getJobsList, updateJobsList } from '../utils/jobs';
+import { Job, UnsplashImage } from '../types/job.type';
+
+const updateJob = (jobId: string, update: Partial<Job>) => {
+  const jobs = getJobsList();
+  const jobIndex = jobs.findIndex(j => j.id === jobId);
+
+  if (jobIndex !== -1) {
+    jobs[jobIndex] = { ...jobs[jobIndex], ...update };
+    updateJobsList(jobs);
+  }
+};
+
 
 export const simulateJobProcessing = (jobId: string) => {
-  const delay = 1000; // Math.floor(Math.random() * 12 + 1) * 5000;
-  console.log(`Simulating job processing for job ${jobId} with delay of ${delay}ms`);
+  const worker = new Worker(path.join(__dirname, '../workers/jobs.worker.ts'), {
+    workerData: { jobId },
+  });
 
-  setTimeout(async () => {
-    console.log(`Processing job ${jobId}...`);
-    const jobs = getJobsList();
-    const job = jobs.find((j) => j.id === jobId);
-    if (job) {
-      const { id, slug, urls } = await getRandomImageFunc();
-      job.status = 'resolved';
-      job.result = { id, slug, urls };
-      updateJobsList(jobs);
-      console.log(`Job ${jobId} resolved.`);
-    } else {
-      console.error(`Job ${jobId} not found.`);
+  worker.on('message', (message: { jobId: string; result: UnsplashImage }) => {
+    console.log('Updating jobs!');
+    updateJob(message.jobId, { status: 'resolved', result: message.result });
+  });
+
+  worker.on('error', (error) => {
+    console.error('Worker error:', error);
+    updateJob(jobId, { status: 'failed' });
+  });
+
+  worker.on('exit', (code) => {
+    if (code !== 0) {
+      console.error(`Worker stopped with exit code ${code}`);
     }
-  }, delay);
+  });
 };

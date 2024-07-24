@@ -4,7 +4,7 @@
   "scripts": {
     "prebuild": "rimraf build",
     "build": "pnpm prebuild && tsc -p tsconfig.prod.json",
-    "dev": "nodemon src/server.ts",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'node --loader ts-node/esm' src/server.ts",
     "lint": "npx eslint --ext .ts,.js src/",
     "lint:fix": "pnpm lint --fix",
     "test": "cross-env ENVIRONMENT=test ../../node_modules/jest/bin/jest.js -i",

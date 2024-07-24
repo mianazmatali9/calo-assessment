@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
+import { ulid } from 'ulid';
+
 import { getJobsList, updateJobsList } from '../utils/jobs';
 import { Job } from '../types/job.type';
-import { ulid } from 'ulid';
 import { sendErrorResponse } from '../utils/sendErrorResponse';
 import { simulateJobProcessing } from '../jobs/unsplash.job';
 
@@ -11,10 +12,11 @@ export const getJobs = (req: Request, res: Response) => {
 
     res.json({ jobs });
   } catch (error: any) {
-    console.log(error);
     res.json({ error: error.message });
   }
 };
+
+
 
 export const createJob = (req: Request, res: Response) => {
   try {
@@ -23,7 +25,9 @@ export const createJob = (req: Request, res: Response) => {
       id: ulid(),
       status: 'pending',
     };
-    jobs.push(newJob);
+
+    jobs.unshift(newJob);
+
     updateJobsList(jobs);
 
     simulateJobProcessing(newJob.id);
