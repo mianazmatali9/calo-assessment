@@ -26,3 +26,4 @@ yarn-error.log*
 lerna-debug.log*
 
 tmp
+jobs.db.json

@@ -7,10 +7,10 @@ import express from 'express';
 import { Server } from 'http';
 import logger from 'morgan';
 
-import { appConfig } from './config/appConfig';
+import { ENV } from './config/envs';
 import { router } from './routes';
 
-const whitelist: string[] = ['http://localhost:3000', appConfig.frontEndDomain!];
+const whitelist: string[] = ['http://localhost:3000', ENV.frontEndDomain!];
 
 const corsOptions: CorsOptions = {
   origin: function (origin, callback) {
@@ -35,7 +35,7 @@ app.use('/', cors(corsOptions), router);
 let server: Server;
 
 const startServer = (): Server => {
-  const port = appConfig.serverPort || 3001;
+  const port = ENV.serverPort || 3001;
 
   try {
     server = app.listen(port, () => {
