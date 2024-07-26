@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Avatar, Badge, Button, Table } from 'flowbite-react';
 import { startCase } from 'lodash-es';
 
 import { getJobById } from 'hooks/useJobById';
 import { Job } from 'types/job.type';
 import { queryClient } from 'App';
+import { SpinIcon } from 'components/shared/SpinIcon';
+import { showNotification } from 'components/shared/showNotification';
+import { parseResponseErrors } from 'utils/parseErrorResponses';
 
 const StatusColor = {
   pending: 'gray',
@@ -19,7 +22,7 @@ interface Props {
 export const JobRow = ({ job }: Props) => {
   const [isFetching, setIsFetching] = useState(false);
 
-  const refetchJob = async (id: string) => {
+  const refetchJob = useCallback(async (id: string) => {
     try {
       setIsFetching(true);
       const fetchedJob = await getJobById(id);
@@ -31,9 +34,9 @@ export const JobRow = ({ job }: Props) => {
         setIsFetching(false);
       }
     } catch (err) {
-      console.error('Error refetching job:', err);
+      showNotification({ message: parseResponseErrors(err), type: 'error' });
     }
-  };
+  }, []);
 
   return (
     <Table.Row key={job.id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -53,8 +56,8 @@ export const JobRow = ({ job }: Props) => {
         </div>
       </Table.Cell>
       <Table.Cell>
-        <Button color="cyan" isProcessing={isFetching} onClick={() => refetchJob(job.id)}>
-          Refetch
+        <Button color="green" onClick={() => refetchJob(job.id)}>
+          <SpinIcon isSpinning={isFetching} />
         </Button>
       </Table.Cell>
     </Table.Row>

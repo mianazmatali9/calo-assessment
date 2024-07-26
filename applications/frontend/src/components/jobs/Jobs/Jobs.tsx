@@ -5,16 +5,17 @@ import { useJobsList } from 'hooks/useJobsList';
 import { useJobCreate } from 'hooks/useJobCreate';
 
 import { JobRow } from '../JobRow/JobRow';
+import { useCallback } from 'react';
 
 export const Jobs = (): JSX.Element | null => {
   const { isLoading, data: jobs } = useJobsList();
   const { mutateAsync: createJob } = useJobCreate();
 
-  const createNewJob = () => {
+  const createNewJob = useCallback(() => {
     createJob().catch((error) => {
       showNotification({ message: error.message, type: 'error' });
     });
-  };
+  }, [createJob]);
 
   if (isLoading) {
     return (
@@ -31,7 +32,9 @@ export const Jobs = (): JSX.Element | null => {
   return (
     <>
       <div className="flex justify-end mb-5">
-        <Button onClick={createNewJob}>+ Create</Button>
+        <Button color="success" onClick={createNewJob}>
+          + Create
+        </Button>
       </div>
       <div className="overflow-x-auto">
         <Table striped>

@@ -22,8 +22,6 @@ export const useJobCreate = () => {
     onSuccess: (data) => {
       const jobs = queryClient.getQueryData<Job[]>(['jobs']);
 
-      console.log('in onSuccess', data, jobs);
-
       if (jobs) {
         const newData = [{...data, status: 'pending'}, ...jobs];
 
