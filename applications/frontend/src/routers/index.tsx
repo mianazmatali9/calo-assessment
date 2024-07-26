@@ -1,7 +1,7 @@
 import { Navigate, useRoutes } from 'react-router-dom';
 
-import { Jobs } from '../components/jobs/Jobs';
-import { AppLayout } from '../components/shared/Layout';
+import { Jobs } from 'components/jobs/Jobs/Jobs';
+import { AppLayout } from 'components/shared/Layout';
 
 const appRoutes = [
   {

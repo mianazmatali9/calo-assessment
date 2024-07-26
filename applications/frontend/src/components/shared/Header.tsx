@@ -1,7 +1,7 @@
 import { Navbar } from 'flowbite-react';
 import { Link } from 'react-router-dom';
 
-import logoUrl from '../../assets/images/logo.png';
+import logoUrl from 'assets/images/logo.png';
 
 export const Header = () => {
   return (

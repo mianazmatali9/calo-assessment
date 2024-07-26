@@ -1,18 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import { parseResponseErrors } from 'utils/parseErrorResponses';
 
-import { baseApi } from '../services/baseApi';
-import { Job } from '../types/job.type';
-import { showNotification } from '../components/shared/showNotification';
+import { baseApi } from 'services/baseApi';
+import { Job } from 'types/job.type';
+import { showNotification } from 'components/shared/showNotification';
 
 const getJobs = async (): Promise<Job[]> => {
   try {
     const response = await baseApi.get('/jobs');
     return response.data.jobs;
   } catch(error) {
-    if (axios.isAxiosError(error)) {
-      showNotification({ message: error.message, type: 'error' });
-    }
+    showNotification({ message: parseResponseErrors(error), type: 'error' });
+
     throw error;
   }
 }

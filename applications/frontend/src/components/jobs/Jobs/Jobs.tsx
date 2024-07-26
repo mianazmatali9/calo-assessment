@@ -1,9 +1,10 @@
 import { Button, Spinner, Table } from 'flowbite-react';
 
-import { useJobsList } from '../../hooks/useJobsList';
-import { useJobCreate } from '../../hooks/useJobCreate';
-import { showNotification } from '../shared/showNotification';
-import JobRow from './JobRow';
+import { showNotification } from 'components/shared/showNotification';
+import { useJobsList } from 'hooks/useJobsList';
+import { useJobCreate } from 'hooks/useJobCreate';
+
+import { JobRow } from '../JobRow/JobRow';
 
 export const Jobs = (): JSX.Element | null => {
   const { isLoading, data: jobs } = useJobsList();

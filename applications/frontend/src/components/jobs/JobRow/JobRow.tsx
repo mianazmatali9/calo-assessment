@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Avatar, Badge, Button, Table } from 'flowbite-react';
 import { startCase } from 'lodash-es';
 
-import { Job } from '../../types/job.type';
-import { queryClient } from '../../App';
-import { getJobById } from '../../hooks/useJobById';
+import { getJobById } from 'hooks/useJobById';
+import { Job } from 'types/job.type';
+import { queryClient } from 'App';
 
 const StatusColor = {
   pending: 'gray',
@@ -16,7 +16,7 @@ interface Props {
   job: Job;
 }
 
-const JobRow = ({ job }: Props) => {
+export const JobRow = ({ job }: Props) => {
   const [isFetching, setIsFetching] = useState(false);
 
   const refetchJob = async (id: string) => {
@@ -40,7 +40,7 @@ const JobRow = ({ job }: Props) => {
       <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
         {job.status === 'resolved' && job.result ? (
           <a href={job.result.urls.full} target="_blank" rel="noreferrer">
-            <Avatar img={job.result.urls.thumb} title={job.result.slug} />
+            <Avatar img={job.result.urls.thumb} title={job.result.slug} alt={job.result.slug} />
           </a>
         ) : (
           <div className="w-10 h-10 bg-gray-300 rounded-full m-auto"></div>
@@ -60,5 +60,3 @@ const JobRow = ({ job }: Props) => {
     </Table.Row>
   );
 };
-
-export default JobRow;

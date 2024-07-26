@@ -13,7 +13,8 @@ const getRandomImageFunc = async () => {
 };
 
 const process = (jobId: string) => {
-  const delay = Math.floor(Math.random() * 12 + 1) * 5000;
+  const delay = Math.floor(Math.random() * 12 + 1) * 5000; // For 1 minutes
+  // const delay = Math.floor(Math.random() * 60 + 1) * 5000; // For 5 minutes
   console.log(`Simulating job processing for job ${jobId} with delay of ${delay}ms`);
 
   setTimeout(async () => {
