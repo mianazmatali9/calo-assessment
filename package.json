@@ -2,6 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "prepare": "husky",
     "lint:backend": "lerna run lint --scope backend",
     "lint:frontend": "lerna run lint --scope frontend",
     "dev:backend": "lerna run dev --scope backend",

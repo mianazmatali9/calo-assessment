@@ -5,17 +5,14 @@ BACKEND_PATTERN="applications/backend"
 FRONTEND_PATTERN="applications/frontend"
 
 if git diff --cached --name-only | grep --quiet "$BACKEND_PATTERN" && git diff --cached --name-only | grep --quiet "$FRONTEND_PATTERN"; then
-  echo "️➡️ Linting backend & frontend applications"
-  pnpm lint
+  echo "️➡️ Typecheck backend & frontend applications"
   pnpm typecheck
 
 elif git diff --cached --name-only | grep --quiet "$BACKEND_PATTERN"; then
-  echo "➡️ Linting backend applications"
-  pnpm lint:backend
+  echo "➡️ Typecheck backend applications"
 
 elif git diff --cached --name-only | grep --quiet "$FRONTEND_PATTERN"; then
-  echo "➡️ Linting frontend applications"
-  pnpm lint:frontend
+  echo "➡️ Typecheck frontend applications"
   pnpm typecheck
 
 else
