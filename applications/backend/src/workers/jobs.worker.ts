@@ -17,14 +17,18 @@ const process = (jobId: string) => {
   console.log(`Simulating job processing for job ${jobId} with delay of ${delay}ms`);
 
   setTimeout(async () => {
-    const { id, slug, urls } = await getRandomImageFunc();
-    console.log(`Job ${jobId} resolved with result ID: ${id}`);
-    if (parentPort) {
-      parentPort.postMessage({ jobId, result: { id, slug, urls } });
+    try {
+      const { id, slug, urls } = await getRandomImageFunc();
+      console.log(`Job ${jobId} resolved with result ID: ${id}`);
+      if (parentPort) {
+        parentPort.postMessage({ jobId, result: { id, slug, urls } });
+      }
+    } catch (err) {
+      console.error(`Error processing job ${jobId}:`, err);
+      throw err;
     }
+    
   }, delay);
 };
 
 process(jobId);
-
-export { getRandomImageFunc };

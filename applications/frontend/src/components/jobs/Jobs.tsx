@@ -5,8 +5,9 @@ import { useJobsList } from '../../hooks/useJobsList';
 import { useJobCreate } from '../../hooks/useJobCreate';
 import { getJobById } from '../../hooks/useJobById';
 import { queryClient } from '../../App';
-import { Job } from '../../types/jobs.type';
+import { Job } from '../../types/job.type';
 import { useState } from 'react';
+import { showNotification } from '../shared/showNotification';
 
 const StatusColor = {
   pending: 'gray',
@@ -19,7 +20,13 @@ export const Jobs = (): JSX.Element | null => {
   const { isLoading, data: jobs, error } = useJobsList();
   const { mutateAsync: createJob } = useJobCreate();
 
-  const createNewJob = () => createJob();
+  const createNewJob = () => {
+    createJob()
+      .then()
+      .catch((error) => {
+        showNotification({ message: error.message, type: 'error' });
+      });
+  };
 
   const refetchJob = async (id: string) => {
     try {

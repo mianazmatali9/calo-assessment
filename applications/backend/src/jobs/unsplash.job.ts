@@ -21,12 +21,12 @@ export const simulateJobProcessing = (jobId: string) => {
   });
 
   worker.on('message', (message: { jobId: string; result: UnsplashImage }) => {
-    console.log('Updating jobs!');
+    console.log(`Resolved job ${jobId}! ✅`);
     updateJob(message.jobId, { status: 'resolved', result: message.result });
   });
 
   worker.on('error', (error) => {
-    console.error('Worker error:', error);
+    console.error(`Failed job ${jobId}! ⚠️`, error);
     updateJob(jobId, { status: 'failed' });
   });
 

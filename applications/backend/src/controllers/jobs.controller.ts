@@ -12,11 +12,9 @@ export const getJobs = (req: Request, res: Response) => {
 
     res.json({ jobs });
   } catch (error: any) {
-    res.json({ error: error.message });
+    res.status(400).json({ message: error.message });
   }
 };
-
-
 
 export const createJob = (req: Request, res: Response) => {
   try {
@@ -25,12 +23,11 @@ export const createJob = (req: Request, res: Response) => {
       id: ulid(),
       status: 'pending',
     };
-
     jobs.unshift(newJob);
-
     updateJobsList(jobs);
 
     simulateJobProcessing(newJob.id);
+
     res.send({ id: newJob.id });
   } catch (err) {
     sendErrorResponse(err as Error, res);
@@ -46,7 +43,7 @@ export const getJobById = (req: Request, res: Response) => {
     if (job) {
       res.json(job);
     } else {
-      res.status(404).send('Job not found');
+      res.status(404).send({ message: 'Job not found' });
     }
   } catch (err) {
     sendErrorResponse(err as Error, res);
