@@ -1,8 +1,9 @@
 import { useMutation } from '@tanstack/react-query';
+import axios from 'axios';
+
 import { baseApi } from '../services/baseApi';
 import { Job } from '../types/job.type';
 import { queryClient } from '../App';
-import axios from 'axios';
 
 const createJob = async (): Promise<Job> => {
   try {

@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+
 import { baseApi } from '../services/baseApi';
 import { Job } from '../types/job.type';
 import { showNotification } from '../components/shared/showNotification';
-import axios from 'axios';
 
 const getJobs = async (): Promise<Job[]> => {
   try {
