@@ -120,27 +120,27 @@ Time Spent: 1.5 hours
 2. API Implementation
 Description: Developing the API endpoints, including GET /jobs, POST /jobs, and GET /jobs/:id.
 Time Spent: 3 hours
-2. Handling Highload
+3. Handling Highload
 Description: It was the most tricky part of this assessment, I've used worker threads to handle multiple requests on the servers.
 Time Spent: 4 hours
-3. Modularization and Refactoring
+4. Modularization and Refactoring
 Description: Refactoring the code to ensure it follows modular principles, improving maintainability.
 Time Spent: 1.5 hours
-4. Test Cases Development
+5. Test Cases Development
 Description: Writing test cases for each API endpoint using Jest and Sinon, including setting up stubs and mocks.
 Time Spent: 4 hours
-5. Jest Configuration
+6. Jest Configuration
 Description: Configuring Jest to work with ES6 modules and TypeScript, including setting up Babel if needed.
 Time Spent: 1 hour
-6. User interface using ReactJS
+7. User interface using ReactJS
 Description: Created an interactive UI using ReactJS and Tailwind, also used Flowbite components and integrated UI with backend.
 Time Spent: 4 hours
-6. Documentation
+8. Documentation
 Description: Documenting the code, including comments, setup instructions, and test execution guidelines.
 Time Spent: 1 hour
-7. Testing and Debugging
+9. Testing and Debugging
 Description: Running tests, debugging issues, and ensuring all functionalities work as expected.
 Time Spent: 2 hours
-8. Final Review and Delivery Preparation
+10. Final Review and Delivery Preparation
 Description: Reviewing the code and tests, preparing the final delivery.
 Time Spent: 1 hour
