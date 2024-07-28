@@ -3,14 +3,17 @@
   "private": true,
   "scripts": {
     "prepare": "husky",
-    "lint:backend": "lerna run lint --scope backend",
-    "lint:frontend": "lerna run lint --scope frontend",
-    "dev:backend": "lerna run dev --scope backend",
+    "dev": "lerna run dev --parallel",
+    "dev:backend": "lerna run dev --scope @calo/backend",
+    "dev:frontend": "lerna run dev --scope @calo/frontend",
     "lint": "lerna run lint",
+    "lint:backend": "lerna run lint --scope @calo/backend",
+    "lint:frontend": "lerna run lint --scope @calo/frontend",
     "lint:fix": "lerna run lint:fix",
     "typecheck": "lerna run typecheck",
-    "test:backend": "lerna run test --scope backend",
-    "test:frontend": "lerna run test --scope frontend"
+    "test": "lerna run test --parallel",
+    "test:backend": "lerna run test --scope @calo/backend",
+    "test:frontend": "lerna run test --scope @calo/frontend"
   },
   "devDependencies": {
     "@types/jest": "^29.5.3",

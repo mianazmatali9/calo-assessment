@@ -24,16 +24,36 @@ _Required Node.js version: >18.16.0
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/crushlovely/aha-rewards-redemption.git
+   git clone https://github.com/mianazmatali9/calo-assessment.git
    ```
 2. Go to directory
     ```sh
-   cd aha-rewards-redemption
+   cd calo-assessment
    ```
 
 3. Install NPM packages
    ```sh
    pnpm install
+   ```
+4. Go to any application
+   ```sh
+   cd applications/backend
+   or
+   cd applications/backend
+   ```
+5. Copy .env file
+   ```sh
+   cp .env.example .env
+   ```
+
+6. Copy .env file
+   ```sh
+   pnpm dev
+   ```
+### Run Tests
+Either on root or any specific application run:
+   ```sh
+   pnpm test
    ```
 
 ### Lerna commands
@@ -57,25 +77,38 @@ _Required Node.js version: >18.16.0
 
 ### Directory structure
   ```
+├── .husky
 ├── applications
-    ├── backend-admin
-      ├── db
-         └── sequelize.js
-      ├── index.js
-      ├── package.json
-      ├── package-lock.json
-      └── README.md
-    ├── backend-shop
-      ├── db
-         └── sequelize.js
-      ├── index.js
-      ├── package.json
-      ├── package-lock.json
-      └── README.md
-    ├── frontend-admin
-    ├── frontend-shop
+    ├── backend
+      ├── src
+          ├── __tests__
+          ├── config
+          ├── controllers
+          ├── jobs
+          ├── middlewares
+          ├── routes
+          ├── services
+          ├── types
+          ├── utils
+          ├── workers
+          ├── app.ts
+          ├── server.ts
+          └── package.json
+    ├── frontend
+      ├── src
+          ├── assets
+          ├── components
+          ├── hooks
+          ├── routers
+          ├── services
+          ├── test-utils
+          ├── types
+          ├── utils
+          ├── App.tsx
+          └── package.json      
 ├── .gitignore
 ├── lerna.json
 ├── package.json
+├── pnpm-workspace.yaml
 └── README.md
   ```
