@@ -8,7 +8,7 @@ jest.mock('fs');
 const jobsFile = path.join(__dirname, '../../../jobs.db.json');
 
 describe('getJobsList', () => {
-  beforeEach(() => {
+  afterEach(() => {
     jest.resetAllMocks();
   });
 
@@ -37,7 +37,7 @@ describe('getJobsList', () => {
 });
 
 describe('updateJobsList', () => {
-  beforeEach(() => {
+  afterEach(() => {
     jest.resetAllMocks();
   });
 

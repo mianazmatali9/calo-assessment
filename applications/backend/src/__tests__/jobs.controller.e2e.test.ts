@@ -77,7 +77,7 @@ describe('Jobs endpoints', () => {
     expect(unsplashJobs.simulateJobProcessing).toHaveBeenCalledWith(response.body.id);
   });
 
-  it('POST /jobs with rate limiter', async () => {
+  it('POST /jobs with rate limiter, should trigger error if more than 50 requests made in an hour', async () => {
     server.close();
     server = await startServer();
     (fs.existsSync as jest.Mock).mockReturnValue(true);
