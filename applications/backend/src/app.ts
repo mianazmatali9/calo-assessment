@@ -33,7 +33,7 @@ app.use('/', cors(corsOptions), router);
 
 let server: Server;
 
-const startServer = (): Server => {
+const startServer = async (): Promise<Server> => {
   const port = ENV.serverPort || 3001;
 
   try {

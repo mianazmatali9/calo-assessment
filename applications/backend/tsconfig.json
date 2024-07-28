@@ -4,6 +4,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
+    "module": "commonjs",
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -20,6 +21,6 @@
     "lib": ["esnext", "dom", "es2018", "esnext.asynciterable"],
   },
   "typeRoots": ["node_modules/@types"],
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "src/views/**/*"],
   "exclude": ["node_modules", "build"],
 }

@@ -28,7 +28,6 @@ const process = (jobId: string) => {
       console.error(`Error processing job ${jobId}:`, err);
       throw err;
     }
-    
   }, delay);
 };
 
