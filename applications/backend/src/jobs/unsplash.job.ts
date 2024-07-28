@@ -4,17 +4,28 @@ import { Worker } from 'worker_threads';
 import { getJobsList, updateJobsList } from '../utils/jobs';
 import { Job, UnsplashImage } from '../types/job.type';
 
-const updateJob = (jobId: string, update: Partial<Job>) => {
+/**
+ * Updates a specific job in the jobs list with the provided update data.
+ *
+ * @param {string} jobId - The ID of the job to be updated.
+ * @param {Partial<Job>} updatedAttributes - An object containing the fields to be updated in the job.
+ */
+const updateJob = (jobId: string, updatedAttributes: Partial<Job>) => {
   const jobs = getJobsList();
   const jobIndex = jobs.findIndex(j => j.id === jobId);
 
   if (jobIndex !== -1) {
-    jobs[jobIndex] = { ...jobs[jobIndex], ...update };
+    jobs[jobIndex] = { ...jobs[jobIndex], ...updatedAttributes };
     updateJobsList(jobs);
   }
 };
 
-
+/**
+ * Simulates the processing of a job by creating a new worker thread.
+ * The worker processes the job and updates its status based on the outcome.
+ *
+ * @param {string} jobId - The ID of the job to be processed.
+ */
 export const simulateJobProcessing = (jobId: string) => {
   const worker = new Worker(path.join(__dirname, '../workers/jobs.worker.ts'), {
     workerData: { jobId },

@@ -6,6 +6,13 @@ import { Job } from '../types/job.type';
 import { sendErrorResponse } from '../utils/sendErrorResponse';
 import { simulateJobProcessing } from '../jobs/unsplash.job';
 
+/*
+  GET /jobs
+  Response: 
+  {
+    "jobs": [{ "id": "string", "status": "string", "results": ...}]
+  }
+*/
 export const getJobs = (req: Request, res: Response) => {
   try {
     const jobs = getJobsList();
@@ -16,6 +23,11 @@ export const getJobs = (req: Request, res: Response) => {
   }
 };
 
+/*
+  POST /jobs
+  Request: {}
+  Response: { "id": "string" }
+*/
 export const createJob = (req: Request, res: Response) => {
   try {
     const jobs = getJobsList();
@@ -34,6 +46,11 @@ export const createJob = (req: Request, res: Response) => {
   }
 };
 
+/*
+  GET /jobs/:id
+  Response:
+  { "id": "string", "status": "string", "results": ...}
+*/
 export const getJobById = (req: Request, res: Response) => {
   try {
     const { id } = req.params;

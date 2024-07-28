@@ -1,13 +1,4 @@
-# AHA Rewards Redemption
-
-The American Heart Association (AHA) is a voluntary health organization supported by public contributions and the donated time of millions of volunteers dedicated to reducing disability and death from heart disease and stroke.  The mission of the Association is “To be a relentless force for a world of longer, healthier lives”. The Association is committed to supporting research, educating healthcare professionals and the public about risk factors, advocating for legislation that supports the mission, and providing educational programs for the community to help reduce disability and death from cardiovascular diseases and stroke. The Association’s primary areas of emphasis are cardiovascular and stroke research, education, advocacy, and revenue generation. 
-
-The American Heart Association is a national organization comprised of the National Center located in Dallas, TX and five regions that cover the United States.  The National Center and the Regions are one legal 501(c)(3) not-for-profit corporation sharing one federal tax identification number.  The Association follows the standards of accounting and financial reporting for not-for-profit organizations as prescribed by the Financial Accounting Standards Board.  Support of the AHA mission is also provided by thousands of volunteers and donors. 
-
-The money to support the programs of the Association is derived primarily from contributions by individuals and from other sources such as corporations and foundations.  With a few exceptions, dollars are raised at the regional level that operate independently but must abide by the Association’s bylaws, policies and standards. The AHA National Center supports the Regions by developing programs and materials, providing operations and support services, and ensuring accurate financial reporting. 
-
-For additional information on the American Heart Association, please visit <a href="https://www.heart.org/">American Heart Association | To be a relentless force for a world of longer, healthier lives</a>.
-
+# CALO Assessment
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -88,4 +79,3 @@ _Required Node.js version: >18.16.0
 ├── package.json
 └── README.md
   ```
-

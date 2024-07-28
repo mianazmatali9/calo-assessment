@@ -4,6 +4,12 @@ import { ENV } from '../config/envs';
 import { Environment } from '../types/environments';
 import axios from 'axios';
 
+/**
+ * Sends an error response based on the type of error.
+ *
+ * @param {Error} error - The error object containing information about the error.
+ * @param {Response} res - The response object used to send the HTTP response.
+ */
 export const sendErrorResponse = (error: Error, res: Response) => {
   if (ENV.environment == Environment.local) {
     console.log(error);
